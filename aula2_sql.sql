@@ -216,3 +216,15 @@ SELECT fun.fun_nome as nome, fun.fun_cargo cargo,
        dep.depto_uf UF
   FROM Funcionarios fun
 inner join Departamento dep ON (dep.ID_depto = fun.ID_depto);
+   --where fun.fun_dta_contrato > '09/12/2004'
+     where YEAR(fun.fun_dta_contrato) > 1985
+order by fun.fun_nome, fun.fun_cargo;
+
+SELECT fun_cargo Cargo,
+       sum(fun_salario) Salario,
+       avg(fun_salario) média_salarial,
+       count(fun_cargo) qtde_cargos
+     from Funcionarios
+group by fun_cargo
+order by fun_cargo;
+
